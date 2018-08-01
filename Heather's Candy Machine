@@ -1,0 +1,54 @@
+#This program is a "virtual candy machine".
+#It request user input (amount of money),
+#offers a selection of candy,
+#accepts a user candy selection,
+#and produces output using conditional statements to #compare user money to candy cost
+#Handles capitalization (i.e. C vs c)
+#Directs the user to try again if candy selection #input is inappropriate (! A/a-E/e)
+
+print "Welcome to Heather's Computer Candy Machine!"
+print "(All candy provided is virtual.) \n"
+print "Let's talk finances. How much money do ya have? "
+
+#Accepts user input and converts to float: How much money they have
+money = gets.chomp.to_f
+
+#Candy options
+print "$#{money}, that's all? Hah! "
+print "Well, lemme tell ya what we got here. \n"
+print "A $0.65 Twix \n"
+print "B $0.50 Chips \n"
+print "C $0.75 Nutter Butter \n"
+print "D $0.65 Peanut Butter Cup \n"
+print "E $0.55 Juicy Fruit Gum \n"
+
+#Ask for user input: What they want
+print "So, What'll ya have? Option A, B, C, D, or E? \n"
+candy = gets.chomp
+
+#Conditional statement (handles caps/no caps)
+if candy == "A" || candy == "a"
+  candy = 0.65
+elsif candy == "B" || candy == "b"
+  candy = 0.75
+elsif candy == "C" || candy == "c"
+  candy = 0.75
+elsif candy == "D" || candy == "d"
+  candy = 0.65
+elsif candy == "E" || candy == "e"
+  candy = 0.55
+else
+  "I don't think I gave you that option. You can choose A, B, C, D, or E. What'll ya have?"
+end
+
+#Conditional statement
+if candy <= money
+  if candy < money
+    print "It's all yours. Yummy! "
+  else
+  print "It's all yours... just barely. Enjoy. "
+end
+#If user input not appropriate
+else
+  print "You're broke! Take your #{money} and go elsewhere. "
+end
