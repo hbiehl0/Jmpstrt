@@ -1,0 +1,34 @@
+#This voting program tracks votes for the 
+#three candidates, reports outcomes, and determines #a winner.
+
+#Welcome user
+puts "Welcome to my election voting program."
+puts "Election candidates are: Heather, Tim, Babadook."
+
+#Create hash and accept user input for selection
+#handles write-in candidates
+results = (1..10).each.with_object(Hash.new(0)) do |i, hash|
+  puts "Voter ##{i}, whom do you select?"
+  name = gets.chomp
+  hash[name] += 1
+  puts "Vote##{i}: <#{name.upcase}>"
+end
+
+
+puts "The results of this very special election are ..."
+
+#Reports outcomes using .each loop
+#Handles grammer for singular/plural votes using #conditional statement
+results.each do |name, votes|
+  if votes < 2
+    puts "#{name} - #{votes} vote"
+  else
+    puts "#{name} - #{votes} votes"
+  end
+end
+# need to revise to handle a tie
+
+#Determine and report a winner
+winner = results.max_by(&:last)
+
+puts "WINNER: #{winner}!"
