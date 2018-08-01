@@ -1,0 +1,53 @@
+#This program generates account information (for students, members, etc)
+#It accepts the following input from user:
+#Name (first and last)
+#It the generates a random 6-digit student ID
+#and email address composed of the first initial, 
+#last name, & last 3 digits of ID
+
+
+#Create array to store all student information
+student_data = []
+
+#.do loop to get  information for multiple accounts
+3.times do
+  #Hash inside loop so that values change with each iteration
+  each_student = {}
+  #user inputs first and last name, saved as variable getnames
+  puts "User, please enter the first and last name of the student."
+  names = gets.chomp.upcase
+  # First and last name (together) are assigned as a value to the key "name"
+  each_student["name"]= names
+
+#generate student id and save as variable id
+identification = rand(111111...999999).to_s
+#save as value to key "ids"
+each_student["id"] = identification
+#get last 3 digits of #id
+last_3_id = identification.slice(3..6)
+
+#create email components
+first_initial = names[0]
+# Split first and last name at the space
+first_and_last = names.split(' ')
+last_name = first_and_last[1]
+
+
+#Create email using concantation
+email = "#{first_initial}#{last_name}#{last_3_id}@adadevelopersacademy.org"
+
+#push email to student_data hash
+each_student["email"] = email.downcase
+student_data << each_student
+end
+
+#puts all student data
+puts "===== Student Information ====="
+
+3.times do |i|
+  puts "Name: #{student_data[i]["name"]}"
+  puts "Student ID: #{student_data[i]["id"]}"
+  puts "Email: #{student_data[i]["email"]}"
+end
+
+puts "Thank you for storing your info with me! Goodbye!"
